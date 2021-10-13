@@ -8,5 +8,10 @@ namespace BlackjackBLL
 {
     class Hand
     {
+        
+        public Hand()
+        {
+
+        }
     }
 }

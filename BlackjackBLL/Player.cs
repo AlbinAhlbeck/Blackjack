@@ -14,12 +14,14 @@ namespace Blackjack
         private string name;
         private string playerID;
         private bool winner;
+        private GameManager gameManager;
 
-        public Player(Hand hand, string name, string playerID)
+        public Player(Hand hand, string name, string playerID, GameManager gameManager)
         {
             this.name = name;
             this.playerID = playerID;
             this.hand = hand;
+            this.gameManager = gameManager;
         }
 
         public Hand Hand
@@ -44,6 +46,11 @@ namespace Blackjack
             {
                 isFinished = value;
             }
+        }
+
+        public void Play()
+        {
+            // give options
         }
 
         public string Name

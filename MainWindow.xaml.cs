@@ -1,5 +1,7 @@
-﻿using System;
+﻿using BlackjackBLL;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +22,26 @@ namespace Blackjack
     /// </summary>
     public partial class MainWindow : Window
     {
+        
+        private GameManager gameManager;
         public MainWindow()
         {
             InitializeComponent();
+            gameManager = new GameManager();
+            gameManager.eventHandler += btnStartgame_Click;
+            
         }
+
+        private void btnStartgame_Click(object sender, EventArgs e)
+        {
+            // add conditions
+            BlackjackWindow blackjack = new BlackjackWindow(gameManager);
+            blackjack.Show();
+            this.Hide();
+        }
+
+        public delegate void TestDelegate(object sender, EventArgs args);
     }
+
+
 }

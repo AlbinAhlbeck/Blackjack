@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Label x:Name="lblNbrOfPlayers" Content="Players:" HorizontalAlignment="Left" Margin="47,36,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtNbrOfPlayers" HorizontalAlignment="Left" Margin="129,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
+        <Label x:Name="lblNbrsOfDecks" Content="Decks:" HorizontalAlignment="Left" Margin="47,89,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtNbrOfDecks" HorizontalAlignment="Left" Margin="129,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
+        <Button x:Name="btnStartgame" Content="Start Game" HorizontalAlignment="Center" Height="29" Margin="0,379,0,0" VerticalAlignment="Top" Width="218" Click="btnStartgame_Click"/>
 
     </Grid>
 </Window>

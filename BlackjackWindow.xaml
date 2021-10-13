@@ -1,0 +1,26 @@
+﻿<Window x:Class="Blackjack.BlackjackWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Blackjack"
+        mc:Ignorable="d"
+        Title="BlackjackWindow" Height="1080" Width="1920">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="253*"/>
+            <ColumnDefinition Width="378*"/>
+            <ColumnDefinition Width="26*"/>
+            <ColumnDefinition Width="143*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="lblCardSlot1" Content="Label" HorizontalAlignment="Left" Margin="201,900,0,0" VerticalAlignment="Top" Grid.Column="1" Height="154" Width="132"/>
+        <StackPanel x:Name="playerCardsPane" Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Grid.ColumnSpan="2" Margin="460,836,54,0"/>
+        <StackPanel x:Name="dealerCardsPane" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Grid.ColumnSpan="2" Margin="460,0,54,836"/>
+        <Image x:Name="imgDeck" HorizontalAlignment="Left" Height="322" Margin="182,302,0,0" VerticalAlignment="Top" Width="206"/>
+        <Label x:Name="lblPlayerName" Content="Player:" HorizontalAlignment="Left" Margin="42,882,0,0" VerticalAlignment="Top" Width="145" FontSize="30"/>
+        <Label x:Name="lblPlayerID" Content="ID:" HorizontalAlignment="Left" Margin="42,932,0,0" VerticalAlignment="Top" Width="145" FontSize="30"/>
+        <Button x:Name="btnHit" Content="HIT" Grid.Column="3" HorizontalAlignment="Center" Margin="0,842,0,0" VerticalAlignment="Top" Height="108" Width="343" Click="btnHit_Click" FontSize="24" Background="#FFC5FFC5"/>
+        <Button x:Name="btnHit_Copy" Content="STAND&#xD;&#xA;" Grid.Column="3" HorizontalAlignment="Center" Margin="0,955,0,0" VerticalAlignment="Top" Height="109" Width="343" Click="btnHit_Click" FontSize="24" RenderTransformOrigin="0.205,1.624" Background="#FFFFCCC9"/>
+
+    </Grid>
+</Window>
