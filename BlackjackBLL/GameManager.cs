@@ -1,27 +1,37 @@
 ﻿using Blackjack;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace BlackjackBLL
 {
+    public delegate string PlayerTurn(string s);
+    public delegate string PlayerInfo();
     public class GameManager
     {
-        public Deck deck;
-        List<Player> players;
-        Dealer dealer;
-        int round;
-        public event EventHandler eventHandler;
+        private Deck deck;
+        private List<Player> players;
+        private Dealer dealer;
+        private int round;
+        private BlackjackWindow blackjack;
+        private PlayerTurn pt;
+        private PlayerInfo pi;
+
         public GameManager()
-        {
+
+        {           
+            blackjack = new BlackjackWindow();
             deck = new Deck(2);
             players = new List<Player>();
+            pt = new PlayerTurn(blackjack.Turn);
+            blackjack.Show();
+            StartGame();
         }
 
-        public void StartGame()
+        private void StartGame()
         {
             round = 1;
             dealer = new Dealer(this, deck);                      // dealer has access to the deck, cards are encapsulated with properties, no cheating :)
@@ -29,13 +39,14 @@ namespace BlackjackBLL
             {
                 Hand hand = new Hand();
                 string name = "";
-                string playerID = "";
-                Player player = new Player(hand, name, playerID, this);
+                Player player = new Player(hand, name, this);
                 players.Add(player);
             }
-
-            Update(); // game loop
+            Debug.WriteLine(pt("player 1"));
+            //Update(); // game loop
         }
+
+
 
         public void Update()
         {
@@ -45,8 +56,11 @@ namespace BlackjackBLL
                 for (int i = 0; i < players.Count; i++)
                 {
                     players[i].Play();
+                    
                 }
             }
         }
+
+      
     }
 }

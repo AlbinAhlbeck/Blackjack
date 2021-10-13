@@ -41,7 +41,6 @@ namespace BlackjackBLL
                for (int j = 0; j < nbrOfCards; j++)
                 {
                     tempDeck.Add(new Card(faces[j % 13], suites[j / 13], j % 13));
-                    Debug.WriteLine(j + "." + tempDeck[j].ToString());
                 }
             return tempDeck;
         }
@@ -177,7 +176,6 @@ namespace BlackjackBLL
                     }
                 }
             }
-            checkForPaths();
         }
 
         public void ShuffleDeck()
@@ -208,21 +206,6 @@ namespace BlackjackBLL
                 return null;
             }
         }
-        public void checkForPaths()
-        {
-            for (int i = 0; i < deck.Count; i++)
-            {
-                if (deck[i].ImagePath == null)
-                {
-                    Debug.WriteLine(deck[i].Face + ". " + deck[i].Suite + " = null");
-                }
-                else
-                {
-                    Debug.WriteLine(deck[i].Face + ". " + deck[i].Suite + " != null");
-                }
-            }
-           
-        }
-
+        
     }
 }

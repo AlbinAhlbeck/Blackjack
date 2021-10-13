@@ -16,10 +16,9 @@ namespace Blackjack
         private bool winner;
         private GameManager gameManager;
 
-        public Player(Hand hand, string name, string playerID, GameManager gameManager)
+        public Player(Hand hand, string name, GameManager gameManager)
         {
             this.name = name;
-            this.playerID = playerID;
             this.hand = hand;
             this.gameManager = gameManager;
         }

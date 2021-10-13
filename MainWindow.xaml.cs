@@ -27,16 +27,14 @@ namespace Blackjack
         public MainWindow()
         {
             InitializeComponent();
-            gameManager = new GameManager();
-            gameManager.eventHandler += btnStartgame_Click;
+            
             
         }
 
         private void btnStartgame_Click(object sender, EventArgs e)
         {
+            gameManager = new GameManager();
             // add conditions
-            BlackjackWindow blackjack = new BlackjackWindow(gameManager);
-            blackjack.Show();
             this.Hide();
         }
 

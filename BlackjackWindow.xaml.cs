@@ -23,16 +23,14 @@ namespace Blackjack
     /// <summary>
     /// Interaction logic for BlackjackWindow.xaml
     /// </summary>
+    public delegate string PlayerTurn(string s);
     public partial class BlackjackWindow : Window
     {
-        private GameManager gameManager;
-        public BlackjackWindow(GameManager gameManager)
+        public BlackjackWindow()
         {
+                                  
             InitializeComponent();
-            this.gameManager = gameManager;
-            //imgDeck.Source = new BitmapImage(new Uri("D:\\GitHub\\Blackjack\\Blackjack\\Resources\\10_of_clubs.png"));
-            //imgDeck.Source = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\Resources\\ace_of_hearts.png", UriKind.Absolute));
-            //Debug.WriteLine(gameManager.deck.DealCard().ImagePath.ToString());
+            /*
             Uri uri = null;
             try
             {
@@ -42,16 +40,20 @@ namespace Blackjack
             {
                 Debug.WriteLine("error in uri " + e);
             }
-           
+            pt("test");
             imgDeck.Source = new BitmapImage(uri);
+            */
 
-        }
+        }       
 
         private void btnHit_Click(object sender, RoutedEventArgs e)
         {
 
         }
-
+        public string Turn(string s)
+        {
+            return s;
+        }
       
 
     }
