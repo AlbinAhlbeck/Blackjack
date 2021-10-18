@@ -14,10 +14,12 @@ public class Card
 		this.cardValue = cardValue;
 	}
 
-	public override string ToString()
+	public Card(string cardFace, Suite cardSuite)
 	{
-		return face + " of " + suite.ToString();
+		face = cardFace;
+		suite = cardSuite;
 	}
+
 
 	public Uri ImagePath
     {
@@ -68,4 +70,16 @@ public class Card
         }
     }
 
+	public override string ToString()
+    {
+        if (imagePath != null)
+        {
+			return new string(Suite.ToString() + " " + face + " - imgPath: " + imagePath.ToString() + "Value: " + CardValue);
+		}
+		else
+        {
+			return new string(Suite.ToString() + " " + face + " Value: " + CardValue);
+		}
+		
+    }
 }

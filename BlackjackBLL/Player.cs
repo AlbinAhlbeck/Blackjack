@@ -23,6 +23,11 @@ namespace Blackjack
             this.gameManager = gameManager;
         }
 
+        public void DrawCard(Card card)
+        {
+            hand.Add(card);
+        }
+
         public Hand Hand
         {
             get
@@ -47,9 +52,9 @@ namespace Blackjack
             }
         }
 
-        public void Play()
+        public bool Play()
         {
-            // give options
+            return true; // always hit
         }
 
         public string Name

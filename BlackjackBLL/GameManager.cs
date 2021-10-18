@@ -10,6 +10,7 @@ namespace BlackjackBLL
 {
     public delegate string PlayerTurn(string s);
     public delegate string PlayerInfo();
+    public delegate void DealerPlay(Uri imagePath, int value);
     public class GameManager
     {
         private Deck deck;
@@ -19,6 +20,7 @@ namespace BlackjackBLL
         private BlackjackWindow blackjack;
         private PlayerTurn pt;
         private PlayerInfo pi;
+        private DealerPlay dealerPlay;
 
         public GameManager()
 
@@ -27,6 +29,8 @@ namespace BlackjackBLL
             deck = new Deck(2);
             players = new List<Player>();
             pt = new PlayerTurn(blackjack.Turn);
+            dealerPlay = new DealerPlay(blackjack.DealerPlay);
+            
             blackjack.Show();
             StartGame();
         }
@@ -34,7 +38,7 @@ namespace BlackjackBLL
         private void StartGame()
         {
             round = 1;
-            dealer = new Dealer(this, deck);                      // dealer has access to the deck, cards are encapsulated with properties, no cheating :)
+            dealer = new Dealer(this, deck);                      // dealer has access to the deck, cards are encapsulated with properties
             for (int i = 0; i < players.Count; i++)               // create all the players                     
             {
                 Hand hand = new Hand();
@@ -43,7 +47,7 @@ namespace BlackjackBLL
                 players.Add(player);
             }
             Debug.WriteLine(pt("player 1"));
-            //Update(); // game loop
+            Update(); // game loop
         }
 
 
@@ -52,12 +56,23 @@ namespace BlackjackBLL
         {
             while(true)
             {
-                dealer.DealCard();
+                for (int i = 0; i < 3; i++)
+                {
+                    Card card = dealer.DealCard();
+                    dealerPlay(card.ImagePath, dealer.Total()); // dealer play a card and update GUI
+                    Debug.WriteLine(card.ToString());
+                }
+               
+               
                 for (int i = 0; i < players.Count; i++)
                 {
-                    players[i].Play();
+                    if(players[i].Play())
+                    {
+                        players[i].DrawCard(dealer.DealCard()) ;
+                    }
                     
                 }
+                break;
             }
         }
 

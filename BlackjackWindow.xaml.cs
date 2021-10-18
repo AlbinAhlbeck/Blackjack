@@ -54,6 +54,17 @@ namespace Blackjack
         {
             return s;
         }
+
+        public void DealerPlay(Uri imagePath, int value)
+        {
+            Image image = new Image();
+            image.Source = new BitmapImage(imagePath);
+            image.Width = 128;
+            image.Height = 256;
+            wrapPanel.Children.Add(image);
+            lblDealerTotal.Content = value;
+            
+        }
       
 
     }
