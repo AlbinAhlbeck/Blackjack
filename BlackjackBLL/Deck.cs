@@ -47,28 +47,83 @@ namespace BlackjackBLL
 
         private void SetImagePaths()
         {
-            for (int i = 0; i < 13; i++)
+            string face = null;
+            int j = 0;
+            int min = 0;
+            int max = 13;
+            for (int i = 0; i < 4; i++)
             {
-                if (deck[i].Suite == Suite.Hearts)
+                if (i == 0)
                 {
-                    if (i == 1)
+                    face = "hearts";
+                    Debug.WriteLine("Looking for hearts");
+                }
+
+                if (i == 1)
+                {
+                    face = "clubs";
+                    Debug.WriteLine("Looking for clubs");
+                    min = 13;
+                    j = min;
+                    max = 26;
+                }
+
+                if (i == 2)
+                {
+                    face = "diamonds";
+                    Debug.WriteLine("Looking for diamonds");
+                    min = 25;
+                    j = min;
+                    max = 38;
+                }
+
+                if (i == 3)
+                {
+                    face = "spades";
+                    Debug.WriteLine("Looking for spades");
+                    min = 38;
+                    j = min;
+                    max = 51;
+                }
+
+                while(j < max)                         
+                {
+                    
+                    // special cards
+                    if (j - min == 0)
                     {
-                        deck[i].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", "ace_of_hearts.png"));
-                        deck[i].CardValue = 1;
+                        deck[j].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", "ace_of_" + face + ".png"));
                     }
 
-                    else if (i == 10)
+                    else if (j - min == 10)
                     {
-                        deck[i].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", "jack_of_hearts.png"));
-                        deck[i].CardValue = 11;
+                        deck[j].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", "jack_of_" + face + ".png"));
                     }
 
-                    else if (i == 11)
+                    else if (j - min == 11)
                     {
-                        deck[i].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", "queen_of_hearts.png"));
-                        deck[i].CardValue = 12;
+                        deck[j].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", "queen_of_" + face + ".png"));
                     }
 
+                    else if (j - min == 12)
+                    {
+                        deck[j].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", "king_of_" + face + ".png"));
+                    }
+
+                    else // if the card is numeric card
+                    {                    
+                            deck[j].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", j + 1 + "_of_" + face + ".png"));
+                                                                       
+                    }
+                    deck[j].CardValue = j - min + 1;
+                    Debug.WriteLine(deck[j].ToString());
+                    j++;
+                }
+
+            }
+        }
+                    
+/*
 
                     else if (i == 12)
                     {
@@ -78,7 +133,7 @@ namespace BlackjackBLL
 
                     else
                     {
-                        deck[i].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", i + 1 + "_of_hearts.png"));
+                        deck[i].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", i + "_of_hearts.png"));
                         deck[i].CardValue = i + 1;
                     }
                 }
@@ -93,20 +148,20 @@ namespace BlackjackBLL
                         deck[i].CardValue = 1;
                     }
 
-                    else if (i == 24)
+                    else if (i == 23)
                     {
                         deck[i].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", "jack_of_clubs.png"));
                         deck[i].CardValue = 11;
                     }
 
-                    else if (i == 25)
+                    else if (i == 24)
                     {
                         deck[i].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", "queen_of_clubs.png"));
                         deck[i].CardValue = 12;
                     }
 
 
-                    else if (i == 26)
+                    else if (i == 25)
                     {
                         deck[i].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", "king_of_clubs.png"));
                         deck[i].CardValue = 13;
@@ -129,20 +184,20 @@ namespace BlackjackBLL
                         deck[i].CardValue = 1;
                     }
 
-                    else if (i == 37)
+                    else if (i == 36)
                     {
                         deck[i].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", "jack_of_diamonds.png"));
                         deck[i].CardValue = 11;
                     }
 
-                    else if (i == 338)
+                    else if (i == 37)
                     {
                         deck[i].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", "queen_of_diamonds.png"));
                         deck[i].CardValue = 12;
                     }
 
 
-                    else if (i == 39)
+                    else if (i == 38)
                     {
                         deck[i].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", "king_of_diamonds.png"));
                         deck[i].CardValue = 13;
@@ -168,19 +223,19 @@ namespace BlackjackBLL
                         deck[i].CardValue = 1;
                     }
 
-                    else if (i == 50)
+                    else if (i == 49)
                     {
                         deck[i].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", "jack_of_spades.png"));
                         deck[i].CardValue = 11;
                     }
 
-                    else if (i == 51)
+                    else if (i == 50)
                     {
                         deck[i].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", "queen_of_spades.png"));
                         deck[i].CardValue = 12;
                     }
 
-                    else if (i == 52)
+                    else if (i == 51)
                     {
                         deck[i].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", "king_of_spades.png"));
                         deck[i].CardValue = 13;
@@ -192,7 +247,7 @@ namespace BlackjackBLL
                     }
                 }
             }
-        }
+*/
 
         public void Shuffle(List<Card> list)
         {

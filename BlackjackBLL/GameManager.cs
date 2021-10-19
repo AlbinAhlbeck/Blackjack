@@ -11,6 +11,7 @@ namespace BlackjackBLL
     public delegate string PlayerTurn(string s);
     public delegate string PlayerInfo();
     public delegate void DealerPlay(Uri imagePath, int value);
+
     public class GameManager
     {
         private Deck deck;
