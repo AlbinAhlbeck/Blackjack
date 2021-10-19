@@ -1,6 +1,7 @@
 ﻿using BlackjackBLL;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,7 @@ namespace Blackjack
 
         public void DrawCard(Card card)
         {
+            Debug.WriteLine(playerID + " drew a " + card.ToString());
             hand.Add(card);
         }
 
@@ -54,7 +56,7 @@ namespace Blackjack
 
         public bool Play()
         {
-            return true; // always hit
+            return true;
         }
 
         public string Name

@@ -72,7 +72,7 @@ namespace BlackjackBLL
                 {
                     face = "diamonds";
                     Debug.WriteLine("Looking for diamonds");
-                    min = 25;
+                    min = 26;
                     j = min;
                     max = 38;
                 }
@@ -81,9 +81,9 @@ namespace BlackjackBLL
                 {
                     face = "spades";
                     Debug.WriteLine("Looking for spades");
-                    min = 38;
+                    min = 39;
                     j = min;
-                    max = 51;
+                    max = 52;
                 }
 
                 while(j < max)                         
@@ -112,10 +112,11 @@ namespace BlackjackBLL
 
                     else // if the card is numeric card
                     {                    
-                            deck[j].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", j + 1 + "_of_" + face + ".png"));
+                            deck[j].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", j - min + 1 + "_of_" + face + ".png"));
                                                                        
                     }
-                    deck[j].CardValue = j - min + 1;
+
+                    deck[j].CardValue = j - min + 1; // set value
                     Debug.WriteLine(deck[j].ToString());
                     j++;
                 }
@@ -123,132 +124,6 @@ namespace BlackjackBLL
             }
         }
                     
-/*
-
-                    else if (i == 12)
-                    {
-                        deck[i].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", "king_of_hearts.png"));
-                        deck[i].CardValue = 13;
-                    }
-
-                    else
-                    {
-                        deck[i].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", i + "_of_hearts.png"));
-                        deck[i].CardValue = i + 1;
-                    }
-                }
-            }
-            for (int i = 13; i < 26; i++)
-            {
-                if (deck[i].Suite == Suite.Clubs)
-                {
-                    if (i == 13)
-                    {
-                        deck[i].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", "ace_of_clubs.png"));
-                        deck[i].CardValue = 1;
-                    }
-
-                    else if (i == 23)
-                    {
-                        deck[i].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", "jack_of_clubs.png"));
-                        deck[i].CardValue = 11;
-                    }
-
-                    else if (i == 24)
-                    {
-                        deck[i].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", "queen_of_clubs.png"));
-                        deck[i].CardValue = 12;
-                    }
-
-
-                    else if (i == 25)
-                    {
-                        deck[i].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", "king_of_clubs.png"));
-                        deck[i].CardValue = 13;
-                    }
-
-                    else
-                    {
-                        deck[i].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", i / 2 + "_of_clubs.png"));
-                        deck[i].CardValue = i / 2;
-                    }
-                }
-            }
-            for (int i = 26; i < 39; i++)
-            {
-                if (deck[i].Suite == Suite.Diamonds)
-                {
-                    if (i == 26)
-                    {
-                        deck[i].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", "ace_of_diamonds.png"));
-                        deck[i].CardValue = 1;
-                    }
-
-                    else if (i == 36)
-                    {
-                        deck[i].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", "jack_of_diamonds.png"));
-                        deck[i].CardValue = 11;
-                    }
-
-                    else if (i == 37)
-                    {
-                        deck[i].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", "queen_of_diamonds.png"));
-                        deck[i].CardValue = 12;
-                    }
-
-
-                    else if (i == 38)
-                    {
-                        deck[i].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", "king_of_diamonds.png"));
-                        deck[i].CardValue = 13;
-                    }
-
-                    else
-                    {
-                        deck[i].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", i / 3 + "_of_diamonds.png"));
-                        deck[i].CardValue = i / 3;
-                    }
-                }
-            }
-
-
-
-            for (int i = 39; i < 52; i++)
-            {
-                if (deck[i].Suite == Suite.Spades)
-                {
-                    if (i == 39)
-                    {
-                        deck[i].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", "ace_of_spades.png"));
-                        deck[i].CardValue = 1;
-                    }
-
-                    else if (i == 49)
-                    {
-                        deck[i].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", "jack_of_spades.png"));
-                        deck[i].CardValue = 11;
-                    }
-
-                    else if (i == 50)
-                    {
-                        deck[i].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", "queen_of_spades.png"));
-                        deck[i].CardValue = 12;
-                    }
-
-                    else if (i == 51)
-                    {
-                        deck[i].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", "king_of_spades.png"));
-                        deck[i].CardValue = 13;
-                    }
-
-                    else
-                    {
-                        deck[i].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", i / 4 + "_of_spades.png"));
-                    }
-                }
-            }
-*/
-
         public void Shuffle(List<Card> list)
         {
             int n = list.Count;

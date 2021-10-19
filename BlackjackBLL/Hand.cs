@@ -30,5 +30,15 @@ namespace BlackjackBLL
 
             return total;
         }
+
+        public List<Uri> GetPaths()
+        {
+            List<Uri> tempList = new List<Uri>();
+            for (int i = 0; i < cards.Count; i++)
+            {
+                tempList.Add(cards[i].ImagePath);
+            }
+            return tempList;
+        }
     }
 }

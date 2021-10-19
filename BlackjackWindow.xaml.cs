@@ -23,36 +23,35 @@ namespace Blackjack
     /// <summary>
     /// Interaction logic for BlackjackWindow.xaml
     /// </summary>
-    public delegate string PlayerTurn(string s);
+
     public partial class BlackjackWindow : Window
     {
+        bool hit = false;
+        bool stand = false;
         public BlackjackWindow()
-        {
-                                  
+        {                              
             InitializeComponent();
-            /*
-            Uri uri = null;
-            try
-            {
-                uri = gameManager.deck.DealCard().ImagePath;
-            }
-            catch(Exception e)
-            {
-                Debug.WriteLine("error in uri " + e);
-            }
-            pt("test");
-            imgDeck.Source = new BitmapImage(uri);
-            */
-
+           
         }       
 
         private void btnHit_Click(object sender, RoutedEventArgs e)
         {
-
+            hit = true;
         }
-        public string Turn(string s)
+
+        public void Turn(List<Uri> imagePaths)
         {
-            return s;
+            playerCardPanel.Children.Clear(); // reset
+            for (int i = 0; i < imagePaths.Count; i++)
+            {
+                Image image = new Image();
+                image.Source = new BitmapImage(imagePaths[i]);
+                image.Width = 128;
+                image.Height = 256;
+                playerCardPanel.Children.Add(image);
+            }
+           
+            //lblPlayerTotal.Content = value;
         }
 
         public void DealerPlay(Uri imagePath, int value)
@@ -61,9 +60,24 @@ namespace Blackjack
             image.Source = new BitmapImage(imagePath);
             image.Width = 128;
             image.Height = 256;
-            wrapPanel.Children.Add(image);
+            dealerCardPanel.Children.Add(image);
             lblDealerTotal.Content = value;
             
+        }
+
+        public bool HitOrStand()
+        {
+            MessageBoxResult mbs = MessageBox.Show("Hit?", "Blackjack", MessageBoxButton.YesNo);
+            switch (mbs)
+            {
+                case MessageBoxResult.Yes:
+                    return true;
+                    break;
+                case MessageBoxResult.No:
+                    return false;
+                    break;
+            }
+            return false;
         }
       
 
