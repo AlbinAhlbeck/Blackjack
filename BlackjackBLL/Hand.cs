@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BlackjackBLL
 {
-    class Hand
+    public class Hand
     {
         private List<Card> cards;
         public Hand()
@@ -24,7 +25,7 @@ namespace BlackjackBLL
             int total = 0;
 
             for (int i = 0; i < cards.Count; i++)
-            {
+            {            
                 total += cards[i].CardValue;
             }
 

@@ -18,7 +18,7 @@
         <Label x:Name="lblPlayerName" Content="Player:" HorizontalAlignment="Left" Margin="42,882,0,0" VerticalAlignment="Top" Width="145" FontSize="30"/>
         <Label x:Name="lblPlayerID" Content="ID:" HorizontalAlignment="Left" Margin="42,932,0,0" VerticalAlignment="Top" Width="145" FontSize="30"/>
         <Button x:Name="btnHit" Content="HIT" Grid.Column="4" HorizontalAlignment="Center" Margin="0,842,0,0" VerticalAlignment="Top" Height="108" Width="343" Click="btnHit_Click" FontSize="24" Background="#FFC5FFC5"/>
-        <Button x:Name="btnHit_Copy" Content="STAND&#xD;&#xA;" Grid.Column="4" HorizontalAlignment="Center" Margin="0,955,0,0" VerticalAlignment="Top" Height="109" Width="343" Click="btnHit_Click" FontSize="24" RenderTransformOrigin="0.205,1.624" Background="#FFFFCCC9"/>
+        <Button x:Name="btnStand" Content="STAND&#xD;&#xA;" Grid.Column="4" HorizontalAlignment="Center" Margin="0,955,0,0" VerticalAlignment="Top" Height="109" Width="343" Click="btnStand_Click" FontSize="24" RenderTransformOrigin="0.205,1.624" Background="#FFFFCCC9"/>
         <WrapPanel x:Name="dealerCardPanel" Grid.ColumnSpan="5" Margin="469,0,343,775" Background="#FFC1FFBE"/>
         <Label x:Name="lblDealerTotal" Content="" HorizontalAlignment="Left" Margin="406,294,0,0" VerticalAlignment="Top" RenderTransformOrigin="18.977,-10.129" Grid.Column="2" FontSize="24" Background="White">
             <Label.BorderBrush>
@@ -29,6 +29,8 @@
             </Label.BorderBrush>
         </Label>
         <WrapPanel x:Name="playerCardPanel" Grid.ColumnSpan="5" Margin="469,775,343,0" Background="#FFBED3FF"/>
+        <Label x:Name="lblPlayer" Content="" Grid.Column="2" HorizontalAlignment="Left" Margin="353,719,0,0" VerticalAlignment="Top" FontSize="24"/>
+        <Label x:Name="lblPlayerTotal" Content="" Grid.Column="2" HorizontalAlignment="Left" Margin="429,1004,0,0" VerticalAlignment="Top" FontSize="24"/>
 
     </Grid>
 </Window>

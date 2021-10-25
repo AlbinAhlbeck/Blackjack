@@ -33,7 +33,10 @@ namespace Blackjack
 
         private void btnStartgame_Click(object sender, EventArgs e)
         {
-            gameManager = new GameManager();
+            //Debug.WriteLine(int.Parse(txtNbrOfPlayers.Text + "   " + int.Parse(txtNbrOfDecks.Text)));
+            int players = Convert.ToInt32(txtNbrOfPlayers.Text);
+            int decks = Convert.ToInt32(txtNbrOfDecks.Text);
+            gameManager = new GameManager(players, decks);
             // add conditions
             this.Hide();
         }

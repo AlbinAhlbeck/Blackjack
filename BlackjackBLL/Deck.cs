@@ -14,16 +14,19 @@ namespace BlackjackBLL
         private int decks = 1; // default
         string[] faces = { "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King" };
         Suite[] suites = { Suite.Hearts, Suite.Clubs, Suite.Diamonds, Suite.Spades };
+
         public Deck(int decks)
         {
             this.decks = decks;
+            Debug.WriteLine("Decks: " + decks);
             Init();
+            Debug.WriteLine(deck.Count);
         }
 
         public void Init()
         {
             deck = new List<Card>();
-            for (int i = 1; i < decks; i++)
+            for (int i = 0; i < decks; i++)
             {
                 deck.AddRange(CreateDeck());
                 SetImagePaths();
@@ -93,30 +96,34 @@ namespace BlackjackBLL
                     if (j - min == 0)
                     {
                         deck[j].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", "ace_of_" + face + ".png"));
+                        deck[j].CardValue = 1;
                     }
 
                     else if (j - min == 10)
                     {
                         deck[j].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", "jack_of_" + face + ".png"));
+                        deck[j].CardValue = 10;
                     }
 
                     else if (j - min == 11)
                     {
                         deck[j].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", "queen_of_" + face + ".png"));
+                        deck[j].CardValue = 10;
                     }
 
                     else if (j - min == 12)
                     {
                         deck[j].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", "king_of_" + face + ".png"));
+                        deck[j].CardValue = 10; 
                     }
 
                     else // if the card is numeric card
                     {                    
                             deck[j].ImagePath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", j - min + 1 + "_of_" + face + ".png"));
-                                                                       
+                        deck[j].CardValue = j - min + 1; // set value
                     }
 
-                    deck[j].CardValue = j - min + 1; // set value
+                    
                     Debug.WriteLine(deck[j].ToString());
                     j++;
                 }
@@ -147,7 +154,7 @@ namespace BlackjackBLL
             }
             else
             {
-                Debug.WriteLine("Deck empty");
+                Init(); // create new deck
                 return null;
             }
         }

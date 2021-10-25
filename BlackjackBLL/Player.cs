@@ -8,25 +8,22 @@ using System.Threading.Tasks;
 
 namespace Blackjack
 {
-    class Player
+    public class Player
     {
         private Hand hand;
         private bool isFinished;
         private string name;
-        private string playerID;
         private bool winner;
-        private GameManager gameManager;
+        private bool fat;
 
-        public Player(Hand hand, string name, GameManager gameManager)
+        public Player(string name)
         {
             this.name = name;
-            this.hand = hand;
-            this.gameManager = gameManager;
+            hand = new Hand();
         }
 
         public void DrawCard(Card card)
         {
-            Debug.WriteLine(playerID + " drew a " + card.ToString());
             hand.Add(card);
         }
 
@@ -41,6 +38,20 @@ namespace Blackjack
                 hand = value;
             }
         }
+
+        public bool Fat
+        {
+            get
+            {
+                return fat;
+            }
+            set
+            {
+                fat = value;
+            }
+        }
+
+      
 
         public bool IsFinished
         {
@@ -71,17 +82,12 @@ namespace Blackjack
             }
         }
 
-        public string PlayerID
+        public string Result()
         {
-            get
-            {
-                return playerID;
-            }
-            set
-            {
-                playerID = value;
-            }
+            return name + " Score: " + hand.Total();
         }
+
+        
 
     }
 }
